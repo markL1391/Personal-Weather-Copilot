@@ -1,7 +1,5 @@
-import os
-import requests
 from weather import geocode_city, get_forecast
-from gpt import ...
+from gpt import ask_gpt
 
 def main():
     city = input("Which city are you in? ").strip()
@@ -11,7 +9,7 @@ def main():
 
     geo = geocode_city(city)
     if not geo:
-        print("Sorry, I couldn't find the weather.")
+        print("Sorry, I couldn't find the city.")
         return
 
     forecast = get_forecast(
@@ -25,4 +23,8 @@ def main():
 
     answer = ask_gpt(weather_now, city_label)
 
+    print("\nLooking out the window and thinking...\n")
     print(answer)
+
+if __name__ == "__main__":
+    main()
